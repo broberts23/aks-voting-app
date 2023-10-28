@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: votingapp
+  labels:
+    app: votingapp
+  namespace: votingapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: votingapp
+  template:
+    metadata:
+      labels:
+        app: votingapp
+    spec:
+      containers:
+        - name: votingapp
+          image: automateddeployments.azurecr.io/voting-app:latest
+          ports:
+            - containerPort: 8080
